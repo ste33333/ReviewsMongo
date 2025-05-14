@@ -1,0 +1,6 @@
+@CarsMongo_HostAddress = http://localhost:5074
+
+GET {{CarsMongo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

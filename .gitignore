@@ -1,0 +1,59 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea*/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache & Temp
+/temp/
+/tmp/
+
+# Frontend (Angular specific - nella cartella car-reviews-app/)
+car-reviews-app/node_modules/
+car-reviews-app/dist/
+car-reviews-app/out-tsc/
+car-reviews-app/.angular/cache/
+# Se vuoi escludere environment.prod.ts specifico per la build di produzione (opzionale)
+# car-reviews-app/src/environments/environment.prod.ts
+
+# Backend (ASP.NET Core specific - nella cartella CarsMongo/)
+CarsMongo/bin/
+CarsMongo/obj/
+CarsMongo/.vs/
+CarsMongo/*.secrets.json # MOLTO IMPORTANTE per non commettere User Secrets!
+# CarsMongo/appsettings.Development.json # Commenta se vuoi commettere questo file,
+                                       # scommenta se contiene segreti e non vuoi commetterlo.
+
+# Altre esclusioni comuni per Angular se `car-reviews-app` è alla root
+/node_modules/ # Se node_modules fosse alla root (ma nel tuo caso è dentro car-reviews-app)
+/dist/
+/tmp/
+*.swp
+*.zip
+*.rar
+*.tar.gz
+
+# Visual Studio Code cache
+.vscode-test/
+
+# Coverage directory generato da test Angular/Jest/Karma
+/coverage/

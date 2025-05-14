@@ -1,0 +1,43 @@
+<form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="mb-4 p-4 border rounded bg-white shadow-sm needs-validation" novalidate>
+  <div *ngIf="submitSuccess" class="alert alert-success" role="alert">{{ submitSuccess }}</div>
+  <div *ngIf="submitError" class="alert alert-danger" role="alert">{{ submitError }}</div>
+
+  <div class="mb-3">
+    <label for="reviewerName" class="form-label">Your Name <span class="text-danger">*</span></label>
+    <input type="text" id="reviewerName" formControlName="reviewerName" class="form-control"
+           [ngClass]="{ 'is-invalid': reviewerName?.invalid && (reviewerName?.dirty || reviewerName?.touched) }">
+    <div *ngIf="reviewerName?.invalid && (reviewerName?.dirty || reviewerName?.touched)" class="invalid-feedback">
+      <div *ngIf="reviewerName?.errors?.['required']">Name is required.</div>
+      <div *ngIf="reviewerName?.errors?.['minlength']">Name must be at least 2 characters.</div>
+      <div *ngIf="reviewerName?.errors?.['maxlength']">Name cannot exceed 50 characters.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="rating" class="form-label">Rating <span class="text-danger">*</span></label>
+    <select id="rating" formControlName="rating" class="form-select"
+            [ngClass]="{ 'is-invalid': rating?.invalid && (rating?.dirty || rating?.touched) }">
+      <option [ngValue]="null" disabled selected>-- Select a rating --</option>
+      <option *ngFor="let r of ratingOptions" [ngValue]="r">{{ r }} Star{{ r > 1 ? 's' : '' }}</option>
+    </select>
+    <div *ngIf="rating?.invalid && (rating?.dirty || rating?.touched)" class="invalid-feedback">
+      <div *ngIf="rating?.errors?.['required']">Rating is required.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="comment" class="form-label">Your Review <span class="text-danger">*</span></label>
+    <textarea id="comment" formControlName="comment" class="form-control" rows="4" placeholder="Share your thoughts about this car..."
+              [ngClass]="{ 'is-invalid': comment?.invalid && (comment?.dirty || comment?.touched) }"></textarea>
+    <div *ngIf="comment?.invalid && (comment?.dirty || comment?.touched)" class="invalid-feedback">
+      <div *ngIf="comment?.errors?.['required']">Comment is required.</div>
+      <div *ngIf="comment?.errors?.['minlength']">Comment must be at least 10 characters.</div>
+      <div *ngIf="comment?.errors?.['maxlength']">Comment cannot exceed 500 characters.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100" [disabled]="isSubmitting">
+    <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+    {{ isSubmitting ? 'Submitting...' : 'Submit Review' }}
+  </button>
+</form>

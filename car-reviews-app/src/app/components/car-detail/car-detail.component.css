@@ -1,0 +1,11 @@
+
+.reviews-section .list-group-item {
+  transition: transform 0.2s ease-in-out;
+}
+.reviews-section .list-group-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+.comment-text {
+  white-space: pre-wrap; 
+}
